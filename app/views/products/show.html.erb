@@ -1,0 +1,33 @@
+<h1>Product Details</h1>
+<div class="container">
+<div class="row text-center">
+  <div class="col">
+    <div class="card bg-light text-center">
+    
+      <div class="card-body">
+        <h5 class="card-title"> 
+        <%= @product.name%>
+        </h5>
+        <p class="card-text">
+        <%=@product.descripton%>
+        </p>
+         <p class="card-text">
+        <%=@product.price%> $ 
+        <%# <%= image_tag @product.image %> 
+     
+        </p>
+          <p>
+       Uploaded by: <%= pr.user.name %>
+        </p>
+         <div> 
+         <% if @product.image.attached? %>
+                 <%=  image_tag @product.image ,  style: "width:300px; display:block;" %> 
+
+         <% end %>      
+        </div>
+    
+      </div>
+    </div>
+  </div>
+</div>
+</div>

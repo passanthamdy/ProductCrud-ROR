@@ -1,0 +1,48 @@
+<h1>Update Product</h1>
+<div class="container">
+<%= form_with model: @product do |form| %>
+  <div class="form-outline mb-4">
+              <%= form.label :name ,class: "form-label" %>
+             <%= form.text_field :name, class: "form-control" %>
+             <% @product.errors.full_messages_for(:name).each do |message| %>
+            <div><%= message %></div>
+         <% end %>
+  </div>
+
+  <div class="form-outline mb-4">
+   
+            <%= form.label :descripton, class: "form-label" %>
+      
+        
+            <%= form.text_area :descripton,class: "form-control" %>
+        <% @product.errors.full_messages_for(:descripton).each do |message| %>
+        <div><%= message %></div>
+    <% end %>
+  </div>
+   <div class="form-outline mb-4">
+    
+    <%= form.label :price ,class: "form-label"%><br>
+    <%= form.text_field :price,class: "form-control" %>
+        <% @product.errors.full_messages_for(:price).each do |message| %>
+            <div><%= message %></div>
+    <% end %>
+  </div>
+  <div class="form-outline mb-4">
+    <div> 
+         <% if @product.image.attached? %>
+                 <%=  image_tag @product.image ,  style: "width:300px; display:block;" %> 
+
+         <% end %>      
+        </div>
+    <%= form.label :image ,class: "form-label"%><br>
+    <%= form.file_field :image,class: "form-control" %>
+        <% @product.errors.full_messages_for(:price).each do |message| %>
+            <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>

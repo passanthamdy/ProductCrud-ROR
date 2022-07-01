@@ -1,0 +1,43 @@
+<h1>Products</h1>
+     <button class="btn btn-dark mb-4"> <%= link_to "Add Product", new_product_path ,:class=>'link' %>     </button>
+
+<div class="row ">
+<% @products.each do |pr| %>
+  <div class="col-sm-6 ">
+    <div class="card bg-light">
+    
+      <div class="card-body">
+        <h5 class="card-title"> 
+        <%=pr.name%>
+        </h5>
+        <p class="card-text">
+        <%=pr.descripton%>
+        </p>
+         <p class="card-text">
+        <%=pr.price%> $
+        </p>
+        <p>
+       Uploaded by: <%= pr.user.name %>
+        </p>
+          <div class="form-outline mb-4">
+    <div> 
+         <% if pr.image.attached? %>
+                 <%=  image_tag pr.image ,  style: "width:300px; display:block;" %> 
+         <% end %>      
+        </div>
+  
+  </div>
+
+        <a href="<%= product_path(pr) %>" class="btn btn-primary"> Show </a>
+        <div class="btn btn-dark"> <%= link_to "Edit", edit_product_path(pr),:class=>'link'%>     </div>
+        <span class="btn btn-danger " style="text-decoration:none !important"> <%= link_to "Destroy", product_path(pr), :class=>'link', data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }%>     </span>
+
+
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
